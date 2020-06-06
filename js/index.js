@@ -15,11 +15,13 @@ pageBody.addEventListener("keydown", () => {
     pageBody.style.backgroundColor = "green";
 });
 
-//3 - doesnt work WHEEL
+//3 -  works WHEEL
 const firstParagraph = document.querySelector("p");
 
-firstParagraph.addEventListener("wheel", () =>{
-    firstParagraph.style.fontSize = "30px";
+firstParagraph.addEventListener("wheel", (event) =>{
+    event.preventDefault();
+    // firstParagraph.style.backgroundColor = "red";
+    firstParagraph.style.fontSize = "50px";
 })
 
 //4  - works DRAG
@@ -30,44 +32,44 @@ theIntro.addEventListener("drag", ()=>
     theIntro.style.display = "none";
 });
 
-//5 - doesnt work LOAD
+//5 -  work LOAD
 const mainTitle = document.querySelector(".logo-heading");
 
-mainTitle.addEventListener("load", () => {
+window.addEventListener("load", () => {
     mainTitle.textContent = "You made it here!";
 });
 
 //6 - doesnt work AUDIO
-const fartSound = document.createElement("audio");
-navBar.appendChild(fartSound);
-fartSound.textContent = "HELP";
-fartSound.src = "mp3/fart-03.mp3";
+//const fartSound = document.createElement("audio");
+//navBar.appendChild(fartSound);
+// fartSound.textContent = "HELP";
+//fartSound.src = "mp3/fart-03.mp3";
+//fartSound.setAttribute("controls");
 
 //fartSound.addEventListener("click", () => {
 // 
 //})
 
-//7 - not work CLICK
+//7 - works CLICK
 const h4Titles = document.querySelectorAll("h4");
 
-console.log(h4Titles);
+h4Titles.forEach((element)=> {        
+    element.addEventListener('click', () => {
+    element.style.backgroundColor = "aqua";
+    element.style.textAlign = "center";
 
-h4Titles.forEach((element)=> {
-    element.addEventListener('click', (event) => {
-        h4Titles.style.backgroundColor = "blue";
     })
 })
 
-//8 - RESIZE
-//HOW do I do the whole thing?
+//8 - 
 
 
-//9 - not work SELECT
+//9 - not work SELECT - fixable
 const allButtons = document.querySelectorAll(".btn");
 
 allButtons.forEach((element)=> {
     element.addEventListener('select', (event) => {
-        allButtons.textContent = "STOP!";
+        element.textContent = "STOP!";
     })
 })
 
@@ -77,7 +79,3 @@ const firstImage = document.querySelector("img");
 firstImage.addEventListener("dblclick", () => {
     firstImage.style.transform = "scale(2.0)";
 })
-
-
-// WHAT IS BUBBLING? propagation
-// WHAT IS THE TARGET?
